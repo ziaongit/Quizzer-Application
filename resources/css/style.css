@@ -1,0 +1,99 @@
+/* =========================
+    GENERAL STYLE START
+===========================*/
+body {
+    font-family: Roboto;
+    margin: 0;
+}
+.hidden {
+    display: none;
+}
+.content_container .item {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: fixed;
+}
+.content_container .item.panel_one {
+    display: block;
+}
+.content_container .wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 200px;
+}
+.content_container .start_quiz {
+    border: 1px solid #cccccc;
+    padding: 10px 20px;
+    border-radius: 40px;
+    color: #9a9a9a;
+    cursor: pointer;
+}
+.start_quiz.started {
+    background: #3f5ab5;
+    color: #fff;
+}
+.panel_two .wrapper,
+.panel_three .wrapper,
+.panel_four .wrapper,
+.panel_five .wrapper, {
+    display: none;
+}
+/* =========================
+    GENERAL STYLE END
+===========================*/
+
+/* =========================
+    PROGRESS BAR START
+===========================*/
+.error {
+    position: fixed;
+    bottom: 15px;
+    width: 100%;
+    color: #f44336;
+    font-weight: bold;
+    text-align: center;
+    display: none; 
+
+}
+.progress {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background: #d0d0d0;
+}
+.bar {
+    width: 25%;
+    height: 5px;
+    background: #00bcd4;
+}
+/* =========================
+    PROGRESS BAR END
+===========================*/
+
+/* =========================
+    QUESTIONS START
+===========================*/
+.options {
+    height: 200px;
+}
+.options div {
+    /* display: none; */
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #3f5ab5;
+    transition: all 0.2s ease;
+}
+.options div.active {
+    color: #007fff;
+    background: #313131;
+}
+.next_question {
+    cursor: pointer;
+}
+/* =========================
+    QUESTIONS END
+===========================*/
