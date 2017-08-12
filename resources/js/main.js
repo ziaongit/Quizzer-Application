@@ -9,6 +9,7 @@ $(function(){
 
             $('.start_quiz').on('click', function(){
                 showPanel(1);
+                lessonNext();
             });
         };
 
@@ -27,25 +28,48 @@ $(function(){
         };
 
         this.showNext = function(next){
-            var wrapper = next.find('wrapper');
+            var wrapper = next.find('.wrapper');
             
             wrapper.fadeIn('500', function(){
                 manageOptions(next);
             });
         };
 
-
         this.manageOptions = function(next) {
-            var counter = 0;
             var options = next.find('.options');
             var childrens = options.find('div');
-
+            var counter = 0;
             childrens.each(function(i, el){
                 $(el).delay(counter).fadeIn(300);
+                counter += 500;
+            });
+            childrens.on('click', function(){
+                childrens.removeClass('active');
+                next.addClass('valid');
+                $(this).addClass('active');
             });
         };
 
+        this.lessonNext = function(){
+            $('.next_question').on('click', function(){
+                var next = $(this).data('next');
+                if(validateSelection($(this))){
+                    showPanel(next);
+                }
+            });
+        };
 
+        this.validateSelection = function($this){
+            var parents = $this.parents().eq(1);
+            if(parents.hasClass('valid')){
+                return true;
+            }else{
+                $('.error').fadeIn('300', function(){
+                    $(this).delay(1000).fadeOut('300');
+                });
+                return false;
+            }
+        };
 
 
         loadQuiz();
