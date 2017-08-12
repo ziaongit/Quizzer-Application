@@ -1,6 +1,10 @@
 $(function(){
 
     (function startQuiz(){
+
+        this.settings = {
+            results:[]
+        };
         
         this.loadQuiz = function(){
             $('.panel_one h1').show('drop', 500, function(){
@@ -13,7 +17,6 @@ $(function(){
             });
         };
 
-        // ShowPanel 
         this.showPanel = function(position){
             var current = $('div[data-panel="'+ (position - 1) +'"]');
             current.find('.wrapper').animate({left: "-=100px", opacity:0},500, function(){
@@ -55,6 +58,8 @@ $(function(){
                 var next = $(this).data('next');
                 if(validateSelection($(this))){
                     showPanel(next);
+                    storeProgress(next);
+
                 }
             });
         };
@@ -69,6 +74,18 @@ $(function(){
                 });
                 return false;
             }
+        };
+
+        this.storeProgress = function(next){
+            $('.progress .bar').animate({'width':'+=25%'},500);
+            var options = $('div[data-panel="'+(next-1)+'"]').find('.options');
+            options.find('div').each(function(i,el){
+                if($(this).hasClass('active')){
+
+                    settings.results.push($(this).text());
+                    console.log(settings.results);
+                }
+            });
         };
 
 
